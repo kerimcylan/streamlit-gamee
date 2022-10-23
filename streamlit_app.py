@@ -38,11 +38,10 @@ st.title("Real-Time / Live Game Selling Dashboard")
 year_filter = st.selectbox("Select the Year", pd.unique(df["activation_Year_"]))
 df = df[df["activation_Year_"] == year_filter]
 
-placeholder = st.empty()
 
-with placeholder.container():
-    kpi1 = st.columns(1)
-    kpi1.metric(label="Totalde Çıkan Oyun ⏳",value=int(count),delta=10 + count)
+
+kpi1 = st.columns(3)
+kpi1.metric(label="Totalde Çıkan Oyun ⏳",value=int(count),delta=10 + count)
 
 ##################################################
 
