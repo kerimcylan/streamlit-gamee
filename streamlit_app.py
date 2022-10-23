@@ -35,7 +35,7 @@ st.set_page_config(
 )
 
 st.subheader('Deneme Data')
-st.bar_chart(data=df,*,x = 'activation_Genre_',y=count)
+st.bar_chart(data=df,x = 'activation_Genre_',y='count')
 
 
 
