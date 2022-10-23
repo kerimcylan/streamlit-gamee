@@ -40,44 +40,21 @@ df = df[df["activation_Year_"] == year_filter]
 
 
 
-for seconds in range(200):
+##################################################
 
-    df["activation_new"] = df["activation_Year_"] * np.random.choice(range(1))
-    df["genre_new"] = df["activation_Genre_"] * np.random.choice(range(1, 5))
-
-    # creating KPIs
-    year = np.mean(df["activation_new"])
+fig_col1, fig_col2 = st.columns(2)
 
 
-    with placeholder.container():
+with fig_col1:
+    st.markdown("### First Chart")
+    fig = px.density_heatmap(data_frame=df, y="count", x="activation_Year_")
+    st.write(fig)
+   
+with fig_col2:
+    st.markdown("### Second Chart")
+    fig2 = px.histogram(data_frame=df, x="activation_Genre_")
+    st.write(fig2)
+  
 
-        # create three columns
-        kpi1, kpi2, kpi3 = st.columns(3)
-
-        # fill in those three columns with respective metrics or KPIs
-        kpi1.metric(
-            label="Year ⏳",
-            value=round(year),
-            delta=round(year) - 10,
-        )
-        
-        
-
-        # create two columns for charts
-        fig_col1, fig_col2 = st.columns(2)
-        with fig_col1:
-            st.markdown("### First Chart")
-            fig = px.density_heatmap(
-                data_frame=df, y="count", x="activation_new"
-            )
-            st.write(fig)
-            
-        with fig_col2:
-            st.markdown("### Second Chart")
-            fig2 = px.histogram(data_frame=df, x="genre_new")
-            st.write(fig2)
-
-        st.markdown("### Detailed Data View")
-        st.dataframe(df)
-        time.sleep(1)
-
+st.markdown("### Detailed Data View")
+st.dataframe(df)
