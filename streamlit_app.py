@@ -35,7 +35,7 @@ st.set_page_config(
 )
 
 st.subheader('Deneme Data')
-st.bar_chart(sql['activation_Genre'])
+st.bar_chart(sql['activation_Genre_'])
 
 
 
