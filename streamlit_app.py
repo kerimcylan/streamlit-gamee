@@ -12,6 +12,9 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 client = bigquery.Client(credentials=credentials)
 
+
+
+
 # Perform query.
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
 @st.experimental_memo(ttl=600)
@@ -22,6 +25,16 @@ def run_query(query):
     rows = [dict(row) for row in rows_raw]
     return rows
 
-rows = run_query("SELECT * FROM `robust-caldron-365720.games.game` LIMIT 10")
+def _fetch_data_bigquery(query):
+    """
+      Take SQL query in Standard SQL and returns a Pandas DataFrame of results
+      ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/enabling-standard-sql
+    """
+    return client.query(query, location="US").to_dataframe()
+
+
+rows = run_query("SELECT * FROM `robust-caldron-365720.games.game` 
+WHERE NOT activation_Year_ = 'N/A'
+")
 
 st.altair_char(rows)
