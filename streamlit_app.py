@@ -33,28 +33,10 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("Real-Time / Live Game Selling Dashboard")
 
-year_filter = st.selectbox("Select the Year", pd.unique(df["activation_Year_"]))
-df = df[df["activation_Year_"] == year_filter]
-
+col1 = st.columns(1)
+col1.metric("Year",activation_Year_)
 
 
-##################################################
-
-fig_col1, fig_col2 = st.columns(2)
 
 
-with fig_col1:
-    st.markdown("### First Chart")
-    fig = px.density_heatmap(data_frame=df, y="count", x="activation_Year_")
-    st.write(fig)
-   
-with fig_col2:
-    st.markdown("### Second Chart")
-    fig2 = px.histogram(data_frame=df, x="activation_Genre_")
-    st.write(fig2)
-  
-
-st.markdown("### Detailed Data View")
-st.dataframe(df)
