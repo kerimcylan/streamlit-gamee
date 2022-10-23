@@ -50,6 +50,9 @@ with fig_col1:
     )
     st.write(fig)
    
-
+with fig_col2:
+    st.markdown("### Second Chart")
+    fig2 = px.histogram(data_frame=df, x="activations_Genre_")
+    st.write(fig2)
 
 
