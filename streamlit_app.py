@@ -41,7 +41,7 @@ df = df[df["activation_Year_"] == year_filter]
 ##################################################
 
 ############################################
-
+placeholder = st.empty()
 for seconds in range(200):
 #while True: 
     
