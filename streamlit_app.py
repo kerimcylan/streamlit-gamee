@@ -46,7 +46,7 @@ for seconds in range(200):
     df["genre_new"] = df["activation_Genre_"] * np.random.choice(range(1, 5))
 
     # creating KPIs
-    year = np.(df["activation_new"])
+    year = np.mean(df["activation_new"])
 
 
     with placeholder.container():
