@@ -34,6 +34,10 @@ st.set_page_config(
     layout="wide",
 )
 
+st.metric(label="Platform", value=str('activations_Platform_'), delta=-0.5,
+    delta_color="inverse")
+
+
 st.subheader('Deneme Data')
 st.bar_chart(data=df,x = 'activation_Genre_',y='count')
 
