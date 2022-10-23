@@ -33,7 +33,7 @@ def run_query(query):
 rows = run_query("SELECT * FROM `robust-caldron-365720.games.game` WHERE NOT activation_Year_ = 'N/A'")
 
 
-df = pd.rpws
+df = pd.rows
 
 
 st.set_page_config(
