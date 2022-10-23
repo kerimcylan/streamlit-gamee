@@ -66,7 +66,7 @@ for seconds in range(200):
             st.markdown("### First Chart")
             fig = px.density_heatmap(
             data_frame=df, y="count", x="activation_Year_")
-            st.write(fig1)
+            st.write(fig)
         with fig_col2:
             st.markdown("### Second Chart")
             fig2 = px.histogram(data_frame=df, x="activation_Genre_")
