@@ -55,7 +55,7 @@ df = df[df["activation_Year_"] == year_filter]
 
 ############################################
 for seconds in range(200):
-while True: 
+#while True: 
     df['activation_Year_new'] = df['activation_Year_'] * np.random.choice(range(1))
     df['activation_Genre_new'] = df['activation_Genre_'] * np.random.choice(range(1))
     df['activation_Platform_new'] = df['activation_Platform_'] * np.random.choice(range(1))
