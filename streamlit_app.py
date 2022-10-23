@@ -21,6 +21,7 @@ sql = """
     SELECT *
     FROM `robust-caldron-365720.games.game`
     WHERE NOT activation_Year_ = 'N/A'
+    ORDER BY activation_Year_ DESC
 """
 
 df = client.query(sql).to_dataframe()
@@ -35,5 +36,5 @@ st.set_page_config(
 st.title("Real-Time / Live Game Selling Dashboard")
 
 year_filter = st.selectbox("Select the Year", pd.unique(df["activation_Year_"]))
-df = sorted(df[df["activation_Year_"] == year_filter])
+df = df[df["activation_Year_"] == year_filter]
 
