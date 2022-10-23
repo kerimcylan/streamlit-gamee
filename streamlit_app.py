@@ -52,7 +52,7 @@ with fig_col1:
    
 with fig_col2:
     st.markdown("### Second Chart")
-    fig2 = px.histogram(data_frame=df, x="activation_Genre_")
+    fig2 = px.histogram(data_frame=df, y="activation_Platform_", x="activation_Genre_")
     st.write(fig2)
   
 
