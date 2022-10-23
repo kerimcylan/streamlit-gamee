@@ -4,3 +4,4 @@ streamlit
 google-cloud-bigquery
 numpy
 plotly.express
+db-dtypes
