@@ -34,4 +34,6 @@ st.set_page_config(
 
 st.title("Real-Time / Live Game Selling Dashboard")
 
+year_filter = st.selectbox("Select the Year", pd.unique(df["activation_Year_"]))
+df = df[df["activation_Year_"] == year_filter]
 
