@@ -8,7 +8,7 @@ from google.cloud import bigquery
 import plotly.express as px
 import time
 from google.cloud import bigquery
-
+import numpy as np
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
