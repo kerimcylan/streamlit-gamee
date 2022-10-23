@@ -42,8 +42,7 @@ kpi1 = st.columns(1)
 kpi1.metric(
     label="Totalde Çıkan Oyun ⏳",
     value=int(count),
-    delta=10 + count,
-)
+    delta=10 + count)
 
 ##################################################
 
