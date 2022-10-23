@@ -34,8 +34,6 @@ st.set_page_config(
     layout="wide",
 )
 
-st.metric(label="Platform", value=str('activations_Platform_'), delta=None,
-    delta_color="inverse")
 
 
 st.subheader('Deneme Data')
