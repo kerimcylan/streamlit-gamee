@@ -40,20 +40,39 @@ df = df[df["activation_Year_"] == year_filter]
 
 ##################################################
 
+############################################
 
-fig_col1, fig_col2 = st.columns(2)
+for seconds in range(200):
+#while True: 
+    
+    df['activation_Genre_new'] = df['activation_Genre_'] * np.random.choice(range(1,5))
+    df['activation_Platform_new'] = df['activation_Platform_'] * np.random.choice(range(1,5))
 
-with fig_col1:
-    st.markdown("### First Chart")
-    fig = px.density_heatmap(
-        data_frame=df, y="count", x="activation_Year_"
-    )
+    # creating KPIs 
+    avg_count = np.mean(df['count']) 
+    
+
+    with placeholder.container():
+        # create three columns
+        kpi1, kpi2, kpi3 = st.columns(3)
+
+        # fill in those three columns with respective metrics or KPIs 
+        kpi1.metric(label="Count ⏳", value=round(avg_count), delta= round(avg_count) - 10)
+
+        # create two columns for charts 
+
+        fig_col1, fig_col2 = st.columns(2)
+        with fig_col1:
+            st.markdown("### First Chart")
+            fig = px.density_heatmap(
+            data_frame=df, y="count", x="activation_Year_")
     st.write(fig)
-   
-with fig_col2:
-    st.markdown("### Second Chart")
-    fig2 = px.histogram(data_frame=df, x="activation_Genre_")
-    st.write(fig2)
+        with fig_col2:
+            st.markdown("### Second Chart")
+            fig2 = px.histogram(data_frame=df, x="activation_Genre_")
+            st.write(fig2)
+        st.markdown("### Detailed Data View")
+        st.dataframe(df)
+        time.sleep(1)
+    #placeholder.empty()
 
-st.markdown("### Detailed Data View")
-st.dataframe(df)
