@@ -40,10 +40,22 @@ df = df[df["activation_Year_"] == year_filter]
 
 ##################################################
 
+#fig_col1, fig_col2 = st.columns(2)
+
+#####with fig_col1:
+    #####st.markdown("### First Chart")
+    #####fig = px.density_heatmap(
+#####        data_frame=df, y="count", x="activation_Year_")
+    #####st.write(fig)
+   
+#####with fig_col2:
+    #####st.markdown("### Second Chart")
+    #####fig2 = px.histogram(data_frame=df, x="activation_Genre_")
+ #####   st.write(fig2)
+
 ############################################
-placeholder = st.empty()
 for seconds in range(200):
-#while True: 
+while True: 
     df['activation_Year_new'] = df['activation_Year_'] * np.random.choice(range(1))
     df['activation_Genre_new'] = df['activation_Genre_'] * np.random.choice(range(1))
     df['activation_Platform_new'] = df['activation_Platform_'] * np.random.choice(range(1))
@@ -74,5 +86,5 @@ for seconds in range(200):
         st.markdown("### Detailed Data View")
         st.dataframe(df)
         time.sleep(1)
-    #placeholder.empty()
+    placeholder.empty()
 
