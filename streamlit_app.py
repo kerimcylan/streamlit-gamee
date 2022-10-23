@@ -55,4 +55,5 @@ with fig_col2:
     fig2 = px.histogram(data_frame=df, x="activation_Genre_")
     st.write(fig2)
 
-
+st.markdown("### Detailed Data View")
+st.dataframe(df)
