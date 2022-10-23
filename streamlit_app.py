@@ -40,9 +40,6 @@ df = df[df["activation_Year_"] == year_filter]
 
 
 
-kpi1 = st.columns(3)
-kpi1.list(label="Totalde Çıkan Oyun ⏳",value=int(count),delta=10 + count)
-
 ##################################################
 
 fig_col1, fig_col2 = st.columns(2)
