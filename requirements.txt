@@ -1,3 +1,4 @@
 altair
 pandas
 streamlit
+google-cloud-bigquery==3.3.5
