@@ -34,25 +34,9 @@ st.set_page_config(
     layout="wide",
 )
 
-st.set_page_config(page_title="Dashboard",layout='wide')
+st.subheader('Deneme Data')
+st.bar_chart(sql['activation_Genre'])
 
-st.markdown("<h1 style='text-align: center; color: black;'>My Dashboard</h1>", unsafe_allow_html=True)
-
-
-st.markdown('***') #separator
-
-buffer, col3, col4 = st.columns([1,7,7,7])
-
-
-with col3:
-    st.markdown("<h5 style='text-align: center; color: black;'>Age Distribution</h1>", unsafe_allow_html=True)
-    st.bar_chart(get_distribution(sql, 'activation_Year_'))
-
-with col4:
-    st.markdown("<h5 style='text-align: center; color: black;'>Country Distribution</h1>", unsafe_allow_html=True)
-    st.pyplot(pie_chart(get_distribution(sql, 'activation_Genre_')))
-
-st.markdown('***') #separator
 
 
 
