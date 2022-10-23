@@ -9,6 +9,7 @@ import plotly.express as px
 import time
 from google.cloud import bigquery
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -33,9 +34,27 @@ st.set_page_config(
     layout="wide",
 )
 
+st.set_page_config(page_title="Dashboard",layout='wide')
 
-col1 = st.columns(1)
-col1.metric("Year",activation_Year_)
+st.markdown("<h1 style='text-align: center; color: black;'>My Dashboard</h1>", unsafe_allow_html=True)
+
+
+st.markdown('***') #separator
+
+buffer, col3, col4 = st.columns([1,7,7,7])
+
+
+with col3:
+    st.markdown("<h5 style='text-align: center; color: black;'>Age Distribution</h1>", unsafe_allow_html=True)
+    st.bar_chart(get_distribution(sql, 'activation_Year_'))
+
+with col4:
+    st.markdown("<h5 style='text-align: center; color: black;'>Country Distribution</h1>", unsafe_allow_html=True)
+    st.pyplot(pie_chart(get_distribution(sql, 'activation_Genre_')))
+
+st.markdown('***') #separator
+
+
 
 
 
