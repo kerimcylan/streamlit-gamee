@@ -10,6 +10,7 @@ import time
 from google.cloud import bigquery
 import numpy as np
 import matplotlib.pyplot as plt
+import plost
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
