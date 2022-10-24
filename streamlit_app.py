@@ -13,7 +13,6 @@ import matplotlib.pyplot as plt
 import plost
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-from streamlit import caching
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
