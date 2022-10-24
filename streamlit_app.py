@@ -36,5 +36,5 @@ st.set_page_config(
     page_icon="✅",
     layout="wide",
 )
-fig = px.histogram(data_frame = df, x="activation_Genre_", y = "count")
+fig = px.histogram(data_frame = df, x="activation_Year_", y = "count")
 st.write(fig)
