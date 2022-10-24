@@ -39,7 +39,8 @@ st.set_page_config(
 fig = px.histogram(data_frame = df, x="activation_Year_", y = "count")
 st.write(fig)
 
-alt.Chart(df).mark_bar().encode(
+fig2 = alt.Chart(df).mark_bar().encode(
     x='activation_Year_',
     y='activation_Genre_',
     color='count')
+st.write(fig2)
