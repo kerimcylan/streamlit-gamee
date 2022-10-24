@@ -42,5 +42,5 @@ st.write(fig)
 fig2 = alt.Chart(df).mark_bar().encode(
     x='activation_Year_',
     y='activation_Genre_',
-    color='count')
+    color='activation_Platform_')
 st.write(fig2)
