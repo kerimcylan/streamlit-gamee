@@ -49,4 +49,4 @@ fig2 = alt.Chart(df).mark_bar().encode(
 st.write(fig2)
 
 
-st.experimental_rerun()
+st.experimental_rerun(3)
