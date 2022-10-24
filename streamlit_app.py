@@ -13,7 +13,6 @@ import matplotlib.pyplot as plt
 import plost
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-from streamlit_autorefresh import st_autorefresh
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -53,6 +52,5 @@ def fetch_and_clean_data(df):
     return df
 
 d1= fetch_and_clean_data(df)
-
 st.experimental_rerun()
-st_autorefresh(interval=5 , key="dataframerefresh")
+
