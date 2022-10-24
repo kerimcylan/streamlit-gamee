@@ -57,7 +57,7 @@ for seconds in range(200):
 
     df['Publisher'] = df['activation_Publisher_'] * np.random.choice(range(1,4))
     df['Genre'] = df['activation_Genre_'] * np.random.choice(range(1,4))
-
+    with placeholder.container():
 
         fig_col1, fig_col2 = st.columns(2)
         with fig_col1:
