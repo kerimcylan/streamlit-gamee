@@ -27,48 +27,36 @@ sql = """
 
 
 df = client.query(sql).to_dataframe()
+df_utils=df.dropna(axis=0)
+df_utils.reset_index(drop=True,inplace=True)
+a=df_utils['activation_Year_'].str.split(" ")
+# for publish date
+b=[]
+for i in range(0,len(a)):
+ c=a[i][0]
+ b.append(c)
+#for status date
+d=df_utils['activation_Genre_'].str.split(" ")
+e=[]
+for i in range(0,len(a)):
+ f=d[i][0]
+ e.append(f)
+df_utils['activation_Publisher_']=b
+df_utils['activation_Year_']=e
+g=df_utils['count'].str.split('/')
+h=[]
+for i in range(0,len(a)):
+ f=g[i][2]
+ h.append(f)
+df_utils['activation_Genre_']=h
 
-
-st.set_page_config(
-    page_title='Real-Time Data Science Dashboard',
-    page_icon='✅',
-    layout='wide'
-)
-
-# dashboard title
-
-st.title("Real-Time / Live Data Science Dashboard")
-
-# top-level filters
-
-job_filter = st.selectbox("Select the Year", pd.unique(df['activation_Year_']))
-
-# creating a single-element container.
-placeholder = st.empty()
-
-# dataframe filter
-
-df = df[df['activation_Year_'] == job_filter]
-
-# near real-time / live feed simulation
-
-for seconds in range(200):
-    # while True:
-
-    df['Publisher'] = df['activation_Publisher_'] * np.random.choice(range(1,4))
-    df['Genre'] = df['activation_Genre_'] * np.random.choice(range(1,4))
-    with placeholder.container():
-
-        fig_col1, fig_col2 = st.columns(2)
-        with fig_col1:
-            st.markdown("### First Chart")
-            fig = px.density_heatmap(data_frame=df, y='count', x='Genre')
-            st.write(fig)
-        with fig_col2:
-            st.markdown("### Second Chart")
-            fig2 = px.histogram(data_frame=df, x='Publisher')
-            st.write(fig2)
-        st.markdown("### Detailed Data View")
-        st.dataframe(df)
-        time.sleep(1)
-
+st.header("Real-Time Dashboard")
+chart_selector = st.sidebar.selectbox("Select the type of chart", ['Pie chart','Bar chart'])
+if chart_selector=='Pie chart':
+  st.write("## Pie chart analysis for various crime")
+  pie_chart = px.pie(df_utils, values='activation_Year_', names='activation_Publisher_')
+  st.plotly_chart(pie_chart,use_container_width = True)
+else:
+  st.write("## Bar chart analysis for crime varying according time")
+  bar_chart = px.histogram(df_utils, x="count", color="activation_Genre")
+  st.plotly_chart(bar_chart,use_container_width = True)
