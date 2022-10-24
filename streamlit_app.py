@@ -30,10 +30,10 @@ df = client.query(sql).to_dataframe()
 
 st.title("Game Count Dashboard")
 
-c1 = st.columns((3))
+c1 = st.columns((7,3))
 with c1:
     st.markdown(" Game Bar Chart")
-    plots.donut_chart(
+    plost.donut_chart(
         data=df,
         theta='activation_Genre_',
         color='count')
