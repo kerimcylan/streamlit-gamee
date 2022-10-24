@@ -31,11 +31,8 @@ df = client.query(sql).to_dataframe()
 
 st.title("Game Count Dashboard")
 
-buffer, a1 = st.columns([1])
-with a1:
-    st.markdown(" Game Bar Chart")
-    plost.donut_chart(
-        data=df,
-        theta='activation_Genre_',
-        color='count')
+st.sidebarcheckbox("Choose Genre", True, key=1)
+select = st.sidebar.selectbox("Select a Genre",df['activation_Genre_'])
 
+year_data=df[df['activation_Year_'] == select]
+select_status = st.sidebar.radio("Games Status", ('activation_Brand_', 'activation_Publisher'))
