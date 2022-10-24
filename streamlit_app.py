@@ -55,8 +55,8 @@ df = df[df['activation_Year_'] == job_filter]
 for seconds in range(200):
     # while True:
 
-    df['Publisher'] = df['activation_Publisher_'] * np.random.choice(range(1, 5))
-    df['Genre'] = df['activation_Genre_'] * np.random.choice(range(1, 5))
+    df['Publisher'] = df['activation_Publisher_'] * np.random.choice(range(1))
+    df['Genre'] = df['activation_Genre_'] * np.random.choice(range(1))
 
     # creating KPIs
     count_new = np.mean(df['count'])
