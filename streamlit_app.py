@@ -30,8 +30,8 @@ df = client.query(sql).to_dataframe()
 
 st.title("Game Count Dashboard")
 
-c1 = st.columns((7,3))
-with c1:
+a1 = st.columns(1)
+with a1:
     st.markdown(" Game Bar Chart")
     plost.donut_chart(
         data=df,
