@@ -36,9 +36,5 @@ st.set_page_config(
     page_icon="✅",
     layout="wide",
 )
-
-fig_col1 = st.columns(2)
-fig_col1=(
-    st.markdown("Deneme"),
-    fig = px.histogram(data_frame = df, x="activation_Genre_", y = "count"),
-    st.write(fig))
+fig = px.histogram(data_frame = df, x="activation_Genre_", y = "count")
+st.write(fig)
