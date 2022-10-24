@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import plost
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-from streamlit import legacy_caching
+from streamlit import caching
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -50,5 +50,5 @@ fig2 = alt.Chart(df).mark_bar().encode(
 st.write(fig2)
 
 
-st.legacy_caching.clear_cache()
+st.legacy_caching.caching.clear_cache()
 st.experimental_rerun()
