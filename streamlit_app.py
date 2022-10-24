@@ -46,7 +46,7 @@ fig_col1, fig_col2 = st.columns(2)
 
 with fig_col1:
     st.markdown("### First Chart")
-    fig = px.pie(ddf,title="Pie Deneme" ,value="count", names="activation_Year_")
+    fig = px.pie(df,title="Pie Deneme" ,value="count", names="activation_Year_")
     st.write(fig)
    
 with fig_col2:
