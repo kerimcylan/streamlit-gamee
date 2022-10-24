@@ -47,3 +47,6 @@ fig2 = alt.Chart(df).mark_bar().encode(
     y='activation_Genre_',
     color='activation_Platform_')
 st.write(fig2)
+
+
+st.experimental_rerun()
