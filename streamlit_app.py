@@ -11,6 +11,8 @@ from google.cloud import bigquery
 import numpy as np
 import matplotlib.pyplot as plt
 import plost
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
