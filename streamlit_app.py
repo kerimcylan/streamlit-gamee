@@ -30,31 +30,57 @@ df = client.query(sql).to_dataframe()
 
 
 st.set_page_config(
-    page_title="Real-Time Game Selling Dashboard",
-    page_icon="✅",
-    layout="wide",
+    page_title='Real-Time Data Science Dashboard',
+    page_icon='✅',
+    layout='wide'
 )
 
-st.title("Real-Time / Live Game Selling Dashboard")
+# dashboard title
 
+st.title("Real-Time / Live Data Science Dashboard")
 
+# top-level filters
 
-##################################################
+job_filter = st.selectbox("Select the Year", pd.unique(df['activation_Year_']))
 
-fig_col1, fig_col2 = st.columns(2)
+# creating a single-element container.
+placeholder = st.empty()
 
+# dataframe filter
 
-with fig_col1:
-    st.markdown("### First Chart")
-    fig = px.pie(df, value="activation_Genre_", names="activation_Year_")
-    fig.show()
-   
-with fig_col2:
-    st.markdown("### Second Chart")
-    fig2 = px.histogram(data_frame=df, x="activation_Genre_",color='count')
-    st.write(fig2)
-  
+df = df[df['activation_Year_'] == job_filter]
 
-st.markdown("### Detailed Data View")
-st.dataframe(df)
+# near real-time / live feed simulation
+
+for seconds in range(200):
+    # while True:
+
+    df['Publisher'] = df['activation_Publisher_'] * np.random.choice(range(1, 5))
+    df['Genre'] = df['activation_Genre_'] * np.random.choice(range(1, 5))
+
+    # creating KPIs
+    count_new = np.mean(df['count'])
+
+    with placeholder.container():
+        # create three columns
+        kpi1, kpi2, kpi3 = st.columns(3)
+
+        # fill in those three columns with respective metrics or KPIs
+        kpi1.metric(label="Game Count⏳", value=round(count_new), delta=round(count_new) - 10)
+
+        # create two columns for charts
+
+        fig_col1, fig_col2 = st.columns(2)
+        with fig_col1:
+            st.markdown("### First Chart")
+            fig = px.density_heatmap(data_frame=df, y='count', x='Genre')
+            st.write(fig)
+        with fig_col2:
+            st.markdown("### Second Chart")
+            fig2 = px.histogram(data_frame=df, x='Publisher')
+            st.write(fig2)
+        st.markdown("### Detailed Data View")
+        st.dataframe(df)
+        time.sleep(1)
+    # placeholder.empty()
 
