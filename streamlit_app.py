@@ -33,7 +33,7 @@ df = client.query(sql).to_dataframe()
 
 st.title("Game Count Dashboard")
 
-st.sidebarcheckbox("Choose Genre", True, key=1)
+st.sidebar.checkbox("Choose Genre", True, key=1)
 select = st.sidebar.selectbox("Select a Genre",df['activation_Genre_'])
 
 year_data=df[df['activation_Year_'] == select]
