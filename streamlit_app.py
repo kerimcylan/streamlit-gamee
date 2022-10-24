@@ -31,7 +31,11 @@ sql = """
 
 df = client.query(sql).to_dataframe()
 
-st.title("Game Count Dashboard")
+st.set_page_config(
+    page_title="Real-Time Game Selling Dashboard",
+    page_icon="✅",
+    layout="wide",
+)
 
 fig_col1 = st.columns(2)
 
