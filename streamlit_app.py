@@ -36,6 +36,9 @@ st.set_page_config(
     page_icon="✅",
     layout="wide",
 )
+
+st.title("Games Selling Count and Year by Year Game Genre's Dashboard")
+
 fig = px.histogram(data_frame = df, x="activation_Year_", y = "count")
 st.write(fig)
 
