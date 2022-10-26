@@ -1,17 +1,7 @@
 FROM python:3.9-slim
-
-EXPOSE 8501
-
 WORKDIR /app
-
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    software-properties-common \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN git clone https://github.com/streamlit/streamlit-example.git .
-
+COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
-
-ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8501","--server.address=10.128.0.5"]
+EXPOSE 8081
+COPY . /app
+CMD streamlit run --server.port 8081 --server.enableCORS false streamlik_app.py
