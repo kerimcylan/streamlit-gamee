@@ -67,12 +67,11 @@ fig2 = alt.Chart(df).mark_bar().encode(
     color='activation_Platform_')
 st.write(fig2)
 
-st.metric(label=("Year : "+sql1_year), value=sql1_count)
+st.metric(label=sql1_year, value=sql1_count)
 
 
 def fetch_and_clean_data(df):
     return df
 
-d1= fetch_and_clean_data(df)
-st.experimental_rerun()
+
 
