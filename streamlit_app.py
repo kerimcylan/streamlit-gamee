@@ -30,16 +30,18 @@ sql = """
 """
 
 sql1 = """
-    SELECT activation_Year_, count
+    SELECT activation_Year_ , count(count) as count
     FROM `robust-caldron-365720.games.game`
     WHERE NOT activation_Year_ = 'N/A'
     GROUP BY activation_Year_
-    ORDER BY activation_Year_ DESC
+    ORDER BY RAND()
+    LIMIT 1
 """
 
 
 df = client.query(sql).to_dataframe()
-yeardf = np.random.choice(sql1="activation_Year_")
+df2 = client.query(sql1).to_dataframe()
+
 
 st.set_page_config(
     page_title="Real-Time Game Count Dashboard",
@@ -62,7 +64,7 @@ fig2 = alt.Chart(df).mark_bar().encode(
     color='activation_Platform_')
 st.write(fig2)
 
-st.metric(label="Year", value=yeardf, delta='count',
+st.metric(label="Year", value=df2, delta='count',
     delta_color="inverse")
 
 
