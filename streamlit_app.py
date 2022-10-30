@@ -14,6 +14,7 @@ import plost
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import random
+from streamlit_autorefresh import st_autorefresh
 
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
@@ -72,17 +73,14 @@ st.write(fig2)
 st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
 
 
+st_autorefresh(interval=5 * 1000, key="dataframerefresh")
+
 def get_data():
     # Perform some request to get a dataframe
-    df = client.get()
+    client.get()
     return df
-    
-table = st.empty()
 
-while True:
-     # update every 5 mins
-     table.dataframe(get_data())
-     time.sleep(5)  
+st.dataframe(get_data())
 
 
 def fetch_and_clean_data(df):
