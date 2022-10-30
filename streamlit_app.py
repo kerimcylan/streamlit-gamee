@@ -42,7 +42,7 @@ sql1 = """
 df = client.query(sql).to_dataframe()
 df2 = client.query(sql1).to_dataframe()
 
-sql1_year = str(df2["activation_Year_"])
+sql1_year = int(df2["activation_Year_"])
 sql1_count = int(df2["count"])
 
 
