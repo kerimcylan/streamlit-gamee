@@ -64,8 +64,7 @@ fig2 = alt.Chart(df).mark_bar().encode(
     color='activation_Platform_')
 st.write(fig2)
 
-st.metric(label="Year", value=df2['activation_Year_'], delta=df2['count'],
-    delta_color="inverse")
+st.metric(label="Year", value=df2['activation_Year_'], delta=df2['count'])
 
 
 def fetch_and_clean_data(df):
