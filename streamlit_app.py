@@ -75,7 +75,7 @@ st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
 def fetch_and_clean_data(df):
     return df
 
-st.experimental_rerun(5000)
+st.experimental_rerun(5)
 
 
 
