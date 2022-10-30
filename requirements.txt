@@ -7,4 +7,3 @@ plotly.express
 db-dtypes
 matplotlib
 plost
-random
