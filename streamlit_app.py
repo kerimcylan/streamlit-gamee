@@ -37,7 +37,7 @@ sql1 = """
 
 
 df = client.query(sql).to_dataframe()
-yeardf = = np.random.choice(sql1="activation_Year_")
+yeardf = np.random.choice(sql1="activation_Year_")
 
 st.set_page_config(
     page_title="Real-Time Game Count Dashboard",
