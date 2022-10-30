@@ -42,6 +42,9 @@ sql1 = """
 df = client.query(sql).to_dataframe()
 df2 = client.query(sql1).to_dataframe()
 
+sql1_year = str(df2["activation_Year_"])
+sql1_count = int(df2["count"])
+
 
 st.set_page_config(
     page_title="Real-Time Game Count Dashboard",
@@ -64,7 +67,7 @@ fig2 = alt.Chart(df).mark_bar().encode(
     color='activation_Platform_')
 st.write(fig2)
 
-st.metric(label="Year", value=df2['activation_Year_'], delta=df2['count'])
+st.metric(label=("Year : "+sql1_year), value=sql1_count)
 
 
 def fetch_and_clean_data(df):
