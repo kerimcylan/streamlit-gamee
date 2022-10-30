@@ -33,6 +33,7 @@ sql1 = """
     SELECT activation_Year_, count
     FROM `robust-caldron-365720.games.game`
     WHERE NOT activation_Year_ = 'N/A'
+    GROUP BY activation_Year_
     ORDER BY activation_Year_ DESC
 """
 
