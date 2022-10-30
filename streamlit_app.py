@@ -55,6 +55,8 @@ st.set_page_config(
 st.title("Games Count and Year by Year Game Genre's Dashboard")
 
 
+st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
+
 st.write("Yıllara Göre Çıkan Oyunların Sayısı")
 fig = px.histogram(data_frame = df, x="activation_Year_", y = "count")
 st.write(fig)
@@ -68,6 +70,19 @@ fig2 = alt.Chart(df).mark_bar().encode(
 st.write(fig2)
 
 st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
+
+
+def get_data():
+    # Perform some request to get a dataframe
+    df = client.get()
+    return df
+    
+table = st.empty()
+
+while True:
+     # update every 5 mins
+     table.dataframe(get_data())
+     time.sleep(5)  
 
 
 def fetch_and_clean_data(df):
