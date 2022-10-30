@@ -32,16 +32,20 @@ sql = """
 df = client.query(sql).to_dataframe()
 
 st.set_page_config(
-    page_title="Real-Time Game Selling Dashboard",
+    page_title="Real-Time Game Count Dashboard",
     page_icon="✅",
     layout="wide",
 )
 
-st.title("Games Selling Count and Year by Year Game Genre's Dashboard")
+st.title("Games Count and Year by Year Game Genre's Dashboard")
 
+
+st.write("Yıllara Göre Çıkan Oyunların Sayısı")
 fig = px.histogram(data_frame = df, x="activation_Year_", y = "count")
 st.write(fig)
 
+
+st.write("Yıla ve Türüne göre Platformlara Sürülen Oyunlar")
 fig2 = alt.Chart(df).mark_bar().encode(
     x='activation_Year_',
     y='activation_Genre_',
