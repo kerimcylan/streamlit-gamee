@@ -29,6 +29,13 @@ sql = """
     ORDER BY activation_Year_ DESC
 """
 
+sq2 = """
+    SELECT activation_Year_ , count(count) as count
+    FROM `robust-caldron-365720.games.game`
+    WHERE NOT activation_Year_ = 'N/A'
+    ORDER BY activation_Year_ DESC
+"""
+
 sql1 = """
     SELECT activation_Year_ , count(count) as count
     FROM `robust-caldron-365720.games.game`
@@ -41,6 +48,7 @@ sql1 = """
 
 df = client.query(sql).to_dataframe()
 df2 = client.query(sql1).to_dataframe()
+df3 = client.query(sql2).to_dataframe()
 
 sql1_year = int(df2["activation_Year_"])
 sql1_count = int(df2["count"])
@@ -58,7 +66,7 @@ st.title("Games Count and Year by Year Game Genre's Dashboard")
 st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
 
 st.write("Yıllara Göre Çıkan Oyunların Sayısı")
-fig = px.histogram(data_frame = df, x="count", y = "activation_Year_")
+fig = px.histogram(data_frame = df3, x="activation_Year_", y = "count")
 st.write(fig)
 
 
