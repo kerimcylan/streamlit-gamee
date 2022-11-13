@@ -54,8 +54,7 @@ df3 = client.query(sql2).to_dataframe()
 sql1_year = int(df2["activation_Year_"])
 sql1_count = int(df2["count"])
 
-sql2_year = int(df3["activation_Year_"])
-sql2_count = int(df3["count"])
+
 
 
 st.set_page_config(
@@ -70,7 +69,7 @@ st.title("Games Count and Year by Year Game Genre's Dashboard")
 st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
 
 st.write("Yıllara Göre Çıkan Oyunların Sayısı")
-fig = px.histogram(data_frame = df3, x="sql2_year", y = "sql2_count")
+fig = px.histogram(data_frame = df3, x="activation_Year_", y = "count")
 st.write(fig)
 
 
