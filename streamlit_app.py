@@ -53,6 +53,9 @@ df3 = client.query(sql2).to_dataframe()
 sql1_year = int(df2["activation_Year_"])
 sql1_count = int(df2["count"])
 
+sql2_year = int(df3["activation_Year_"])
+sql2_count = int(df3["count"])
+
 
 st.set_page_config(
     page_title="Real-Time Game Count Dashboard",
