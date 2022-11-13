@@ -58,7 +58,7 @@ st.title("Games Count and Year by Year Game Genre's Dashboard")
 st.metric(label=("Year : " + str(sql1_year)) , value=sql1_count)
 
 st.write("Yıllara Göre Çıkan Oyunların Sayısı")
-fig = px.histogram(data_frame = df, x="activation_Year_", y = "count")
+fig = px.histogram(data_frame = df, x="count", y = "activation_Year_")
 st.write(fig)
 
 
